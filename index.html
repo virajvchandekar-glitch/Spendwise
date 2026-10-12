@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpendWise | Student Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#">
+      <span class="brand-icon">S</span> SpendWise
+    </a>
+
+    <p class="nav-heading">MENU</p>
+    <a class="nav-link active" href="#dashboard">▦ Dashboard</a>
+    <a class="nav-link" href="#transactions">↕ Transactions</a>
+    <a class="nav-link" href="#budgets">◎ Budget Planner</a>
+
+    <div class="sidebar-bottom">
+      <p>STUDENT EDITION</p>
+      <span>Manage money. Build habits.</span>
+    </div>
+  </aside>
+
+  <main class="main-content" id="dashboard">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">YOUR PERSONAL FINANCE SPACE</p>
+        <h1>Dashboard</h1>
+        <p class="muted">Track your money, one day at a time.</p>
+      </div>
+      <div class="profile">
+        <span class="status-dot"></span> Student Account
+      </div>
+    </header>
+
+    <section class="welcome">
+      <div>
+        <p class="eyebrow">YOUR MONEY, YOUR CONTROL</p>
+        <h2>Small savings. <span>Big goals.</span></h2>
+        <p>Stay on top of your spending and make every rupee count.</p>
+      </div>
+      <div class="welcome-icon">₹</div>
+    </section>
+
+    <section class="stats">
+      <article class="stat-card">
+        <p>Total Balance</p>
+        <h2 id="balance">₹0.00</h2>
+        <span class="muted">Income minus expenses</span>
+      </article>
+      <article class="stat-card">
+        <p>Total Income</p>
+        <h2 id="income" class="green">₹0.00</h2>
+        <span class="muted">Money received</span>
+      </article>
+      <article class="stat-card">
+        <p>Total Expenses</p>
+        <h2 id="expenses" class="red">₹0.00</h2>
+        <span class="muted">Money spent</span>
+      </article>
+    </section>
+
+    <section class="content-grid">
+      <article class="panel" id="transactions">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">YOUR MONEY MOVEMENT</p>
+            <h2>Recent Transactions</h2>
+          </div>
+          <select id="filter">
+            <option value="all">All</option>
+            <option value="income">Income</option>
+            <option value="expense">Expenses</option>
+          </select>
+        </div>
+        <div id="transaction-list" class="transaction-list"></div>
+      </article>
+
+      <article class="panel" id="budgets">
+        <p class="eyebrow">QUICK ACTION</p>
+        <h2>Add Transaction</h2>
+        <p class="muted">Record your income or spending.</p>
+
+        <form id="transaction-form">
+          <label for="title">Description</label>
+          <input id="title" type="text"
+                 placeholder="e.g. College canteen" required>
+
+          <label for="amount">Amount (₹)</label>
+          <input id="amount" type="number"
+                 min="0.01" step="0.01"
+                 placeholder="e.g. 150" required>
+
+          <label for="type">Transaction Type</label>
+          <select id="type">
+            <option value="expense">Expense</option>
+            <option value="income">Income</option>
+          </select>
+
+          <label for="category">Category</label>
+          <select id="category">
+            <option>Food</option>
+            <option>Travel</option>
+            <option>Education</option>
+            <option>Shopping</option>
+            <option>Entertainment</option>
+            <option>Salary / Allowance</option>
+            <option>Other</option>
+          </select>
+
+          <label for="date">Date</label>
+          <input id="date" type="date" required>
+
+          <button class="primary-btn" type="submit">
+            + Add Transaction
+          </button>
+        </form>
+      </article>
+    </section>
+
+    <section class="panel chart-panel">
+      <div>
+        <p class="eyebrow">SPENDING OVERVIEW</p>
+        <h2>Where does your money go?</h2>
+      </div>
+      <div class="chart-wrap">
+        <canvas id="expense-chart"></canvas>
+      </div>
+    </section>
+
+    <footer>
+      SpendWise · Student Expense Tracker · Built with HTML, CSS & JavaScript
+    </footer>
+  </main>
+</body>
+</html>
